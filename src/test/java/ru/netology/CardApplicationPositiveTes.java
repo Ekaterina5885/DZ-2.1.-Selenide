@@ -17,43 +17,23 @@ public class CardApplicationPositiveTes {
     @Test
     public void shouldReturnSuccessIfFieldsAreFilledInCorrectly() {
 
-        $("[data-test-id=name] input").setValue("Ирина Пирогова");
-        $("[data-test-id=phone] input").setValue("+79883335522");
+        $("[data-test-id='name'] [type=text]").setValue("Ирина Пирогова");
+        $("[data-test-id=phone] [class='input__box'] [class='input__control']").setValue("+79883335522");
         $("[data-test-id=agreement]").click();
-        $("[type=button]").click();
-        $("[data-test-id=order-success]").shouldHave(exactText("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
+        $("[role=button] [class='button__content'] [class='button__text']").click();
+        $("[data-test-id=order-success]")
+                .shouldHave(exactText("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
     }
 
-    // 2. Отправка заявки с указание только имени;
-    @Test
-    public void shouldReturnSuccessfullyIfIfOnlyNameIsSpecified() {
-
-        $("[data-test-id=name] input").setValue("Ирина");
-        $("[data-test-id=phone] input").setValue("+79883335522");
-        $("[data-test-id=agreement]").click();
-        $("[type=button]").click();
-        $("[data-test-id=order-success]").shouldHave(exactText("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
-    }
-
-    // 3. Отправка заявки с указание только фамилии;
-    @Test
-    public void shouldReturnSuccessfullyIfIfOnlySurnameIsSpecified() {
-
-        $("[data-test-id=name] input").setValue("Пирогова");
-        $("[data-test-id=phone] input").setValue("+79883335522");
-        $("[data-test-id=agreement]").click();
-        $("[type=button]").click();
-        $("[data-test-id=order-success]").shouldHave(exactText("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
-    }
-
-    // 4. Отправка заявки с указание фамилии через дефис;
+    // 2. Отправка заявки с указанием фамилии через дефис;
     @Test
     public void shouldReturnSuccessfullyIfSurnameWithHyphen() {
 
-        $("[data-test-id=name] input").setValue("Ирина Пирогова-Смирнова");
-        $("[data-test-id=phone] input").setValue("+79883335522");
+        $("[data-test-id='name'] [type=text]").setValue("Ирина Пирогова-Смирнова");
+        $("[data-test-id=phone] [class='input__box'] [class='input__control']").setValue("+79883335522");
         $("[data-test-id=agreement]").click();
-        $("[type=button]").click();
-        $("[data-test-id=order-success]").shouldHave(exactText("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
+        $("[role=button] [class='button__content'] [class='button__text']").click();
+        $("[data-test-id=order-success]")
+                .shouldHave(exactText("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
     }
 }
